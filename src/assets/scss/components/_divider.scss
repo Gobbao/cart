@@ -1,0 +1,12 @@
+@mixin divider($color) {
+    &:after {
+        width: 100%;
+
+        margin-top: 3px;
+
+        display: block;
+
+        content: "";
+        border-bottom: 2px solid $color;
+    }
+}
