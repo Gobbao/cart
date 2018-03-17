@@ -1,0 +1,39 @@
+.flip {
+    position: relative;
+
+    &:hover {
+        .flip__front {
+            transform: rotateY(180deg);
+        }
+
+        .flip__back {
+            opacity: 1;
+            transform: rotateY(0deg);
+        }
+    }
+
+    &__front,
+    &__back {
+        display: block;
+
+        transition-duration: .5s;
+        transition-property: transform, opacity;
+        transition-timing-function: cubic-bezier(.175, .885, .32, 1.275);
+    }
+
+    &__front {
+        transform: rotateY(0deg);
+    }
+
+    &__back {
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+        top: 0px;
+        left: 0px;
+
+        opacity: 0;
+        transform: rotateY(-180deg);
+    }
+}

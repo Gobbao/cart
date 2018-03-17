@@ -16,6 +16,7 @@
 
 <script>
     import Product from '_components/Product.vue'
+    import products from '_src/products'
 
     export default {
         name: 'ProductsView',
@@ -26,32 +27,7 @@
 
         data () {
             return {
-                products: [
-                    {
-                        id: 0,
-                        title: 'Camisa Nike Corinthians I',
-                        price: 229.9,
-                        installments: 9,
-                        currencyFormat: 'R$',
-                        image: 'https://i2.zst.com.br/images/camisa-torcedor-corinthians-i-2017-18-sem-numero-nike-photo179243761-45-2a-11.jpg'
-                    },
-                    {
-                        id: 1,
-                        title: 'Camisa Feminina Nike Corinthians I',
-                        price: 199.9,
-                        installments: 7,
-                        currencyFormat: 'R$',
-                        image: 'https://i2.zst.com.br/images/camisa-torcedor-corinthians-i-2017-18-sem-numero-nike-photo179243761-45-2a-11.jpg'
-                    },
-                    {
-                        id: 2,
-                        title: 'Calção Nike Corinthians',
-                        price: 49.9,
-                        installments: 0,
-                        currencyFormat: 'R$',
-                        image: 'https://i2.zst.com.br/images/camisa-torcedor-corinthians-i-2017-18-sem-numero-nike-photo179243761-45-2a-11.jpg'
-                    }
-                ]
+                products
             }
         }
     }
