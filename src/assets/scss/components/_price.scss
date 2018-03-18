@@ -1,0 +1,13 @@
+@mixin price ($integer-fs: 18px, $float-fs: 12px) {
+    display: flex;
+    align-items: baseline;
+
+    font-size: $float-fs;
+
+    &__integer {
+        margin-left: 4px;
+
+        font-size: $integer-fs;
+        font-weight: bold;
+    }
+}

@@ -99,6 +99,7 @@
     @import '~_scss_components/card';
     @import '~_scss_components/divider';
     @import '~_scss_components/flip';
+    @import '~_scss_components/price';
 
     .product {
         width: 100%;
@@ -113,17 +114,7 @@
         }
 
         .price {
-            display: flex;
-            align-items: baseline;
-
-            font-size: 12px;
-
-            &__integer {
-                margin-left: 4px;
-
-                font-size: 18px;
-                font-weight: bold;
-            }
+            @include price();
         }
 
         .installments {
