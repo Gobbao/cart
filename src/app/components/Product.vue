@@ -101,6 +101,9 @@
     @import '~_scss_components/flip';
 
     .product {
+        width: 100%;
+        max-width: 300px;
+
         .divider {
             @include divider($color-yellow);
 

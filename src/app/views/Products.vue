@@ -38,8 +38,11 @@
         &__list {
             margin-top: 15px;
 
-            &__item:not(:first-child) {
-                margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+
+            &__item {
+                margin: 5px auto;
             }
         }
     }
