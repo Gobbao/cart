@@ -9,4 +9,12 @@
     font-weight: bold;
     line-height: 40px;
     text-transform: uppercase;
+
+    &:hover {
+        background-color: rgba(black, .8);
+    }
+
+    &:active {
+        background-color: rgba(black, .6);
+    }
 }
