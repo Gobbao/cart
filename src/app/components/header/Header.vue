@@ -1,10 +1,10 @@
 <template>
     <div class="header">
-        <div class="header__menu">
+        <div @click="openCart" class="header__menu">
             <i class="fas fa-shopping-bag"></i>
         </div>
 
-        <cart></cart>
+        <cart ref="cart"></cart>
     </div>
 </template>
 
@@ -16,6 +16,12 @@
 
         components: {
             Cart
+        },
+
+        methods: {
+            openCart () {
+                this.$refs.cart.open()
+            }
         }
     }
 </script>

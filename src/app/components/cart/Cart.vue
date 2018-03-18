@@ -1,5 +1,9 @@
 <template>
-    <div class="cart">
+    <div class="cart" :style="cartStyle">
+        <div class="cart__close" @click="close">
+            <i class="cart__close__icon fas fa-times"></i>
+        </div>
+
         <div class="cart__header">
             <i class="cart__header__icon fas fa-shopping-bag"></i>
             <span class="cart__header__title">SACOLA</span>
@@ -7,7 +11,16 @@
 
         <div class="cart__divider divider"></div>
 
-        <div class="cart__list"></div>
+        <div class="cart__list">
+            <template v-for="product in products">
+                <cart-item
+                    :key="product.id"
+                    :item="product"
+                ></cart-item>
+
+                <div :key="`d-${product.id}`" class="divider"></div>
+            </template>
+        </div>
 
         <div class="cart__price">
             <span class="cart__price__label">Subtotal</span>
@@ -34,13 +47,22 @@
 </template>
 
 <script>
+    import CartItem from '_components/cart/CartItem.vue'
     import formatPrice from '_utils/format-price'
 
     export default {
         name: 'Cart',
 
+        components: {
+            CartItem
+        },
+
         data () {
             return {
+                cartStyle: {
+                    right: '-100%',
+                    opacity: 0
+                },
                 products: [
                     {
                         id: 0,
@@ -101,7 +123,23 @@
         },
 
         methods: {
-            formatPrice
+            formatPrice,
+
+            open () {
+                this.cartStyle = {
+                    transition: 'right .45s ease-out, opacity 0s',
+                    right: '0%',
+                    opacity: 1
+                }
+            },
+
+            close () {
+                this.cartStyle = {
+                    transition: 'right .45s ease-out, opacity .5s cubic-bezier(1,0,1,0)',
+                    right: '-100%',
+                    opacity: 0
+                }
+            }
         }
     }
 </script>
@@ -114,12 +152,12 @@
     .cart {
         width: 100%;
         height: 100%;
+        max-width: 400px;
 
         padding: 15px;
 
         position: fixed;
         top: 0;
-        right: 0;
 
         background-color: $color-black;
 
@@ -131,6 +169,21 @@
             width: 100%;
 
             margin: 5px 0;
+        }
+
+        &__close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+
+            color: black;
+            font-size: 30px;
+
+            cursor: pointer;
+
+            &:hover {
+                color: white;
+            }
         }
 
         &__header {
