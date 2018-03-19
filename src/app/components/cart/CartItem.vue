@@ -1,6 +1,6 @@
 <template>
     <div class="cart-item">
-        <div class="cart-item__close">
+        <div @click="removeProductFromCart(item)" class="cart-item__close">
             <i class="cart-item__close__icon fas fa-times"></i>
         </div>
 
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex'
     import formatPrice from '_utils/format-price'
 
     export default {
@@ -44,7 +45,11 @@
         },
 
         methods: {
-            formatPrice
+            formatPrice,
+
+            ...mapActions([
+                'removeProductFromCart'
+            ])
         }
     }
 </script>

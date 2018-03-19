@@ -62,12 +62,13 @@
                 </span>
             </div>
 
-            <button class="product__back__add-to-cart button">Add to cart</button>
+            <button @click="addProductToCart(product)" class="product__back__add-to-cart button">Add to cart</button>
         </div>
     </div>
 </template>
 
 <script>
+    import { mapActions } from 'vuex'
     import formatPrice from '_utils/format-price'
 
     export default {
@@ -89,7 +90,11 @@
         },
 
         methods: {
-            formatPrice
+            formatPrice,
+
+            ...mapActions([
+                'addProductToCart'
+            ])
         }
     }
 </script>

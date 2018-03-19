@@ -1,6 +1,10 @@
 <template>
     <div class="header">
-        <div @click="openCart" class="header__menu">
+        <div @click="openCart"
+            class="header__menu"
+            :class="{ badge: totalProducts }"
+            :badge="totalProducts"
+        >
             <i class="fas fa-shopping-bag"></i>
         </div>
 
@@ -9,6 +13,7 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     import Cart from '_components/cart/Cart.vue'
 
     export default {
@@ -16,6 +21,18 @@
 
         components: {
             Cart
+        },
+
+        computed: {
+            ...mapState({
+                products: state => state.cart.products
+            }),
+
+            totalProducts () {
+                return this.products.reduce((prev, curr) =>
+                    prev + curr.quantity
+                , 0)
+            }
         },
 
         methods: {
@@ -27,6 +44,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '~_scss_components/badge';
+
     .header {
         width: 100%;
         height: 50px;

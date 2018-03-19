@@ -5,7 +5,12 @@
         </div>
 
         <div class="cart__header">
-            <i class="cart__header__icon fas fa-shopping-bag"></i>
+            <div class="cart__header__icon"
+                :class="{ badge: totalProducts }"
+                :badge="totalProducts"
+            >
+                <i class="fas fa-shopping-bag"></i>
+            </div>
             <span class="cart__header__title">SACOLA</span>
         </div>
 
@@ -28,9 +33,9 @@
                 <div class="cart__price__value__total price">
                     {{ currencyFormat }}
                     <span class="price__integer">
-                        {{ formatPrice(totalPrice).split(',')[0] }}
+                        {{ totalPriceInteger }}
                     </span>
-                    {{ `,${formatPrice(totalPrice).split(',')[1]}` }}
+                    {{ totalPriceFloat }}
                 </div>
 
                 <div v-if="minorInstallment" class="cart__price__value__installments">
@@ -47,6 +52,7 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     import CartItem from '_components/cart/CartItem.vue'
     import formatPrice from '_utils/format-price'
 
@@ -62,37 +68,7 @@
                 cartStyle: {
                     right: '-100%',
                     opacity: 0
-                },
-                products: [
-                    {
-                        id: 0,
-                        title: 'Camisa Nike Corinthians I',
-                        description: '14/15 s/nº',
-                        availableSizes: ['S', 'G', 'GG', 'GGG'],
-                        style: 'Branco com listras pretas',
-                        price: 229.9,
-                        installments: 9,
-                        currencyId: 'BRL',
-                        currencyFormat: 'R$',
-                        isFreeShipping: true,
-                        quantity: 2,
-                        image: 'https://i2.zst.com.br/images/camisa-torcedor-corinthians-i-2017-18-sem-numero-nike-photo179243761-45-2a-11.jpg'
-                    },
-                    {
-                        id: 1,
-                        title: 'Camisa Nike Corinthians II',
-                        description: '14/15 s/nº',
-                        availableSizes: ['S', 'G', 'GG', 'GGG'],
-                        style: 'Preta com listras brancas',
-                        price: 229.9,
-                        installments: 9,
-                        currencyId: 'BRL',
-                        currencyFormat: 'R$',
-                        isFreeShipping: true,
-                        quantity: 1,
-                        image: 'https://i2.zst.com.br/images/camisa-torcedor-corinthians-i-2017-18-sem-numero-nike-photo179243761-45-2a-11.jpg'
-                    }
-                ]
+                }
             }
         },
 
@@ -109,6 +85,18 @@
                 , 0)
             },
 
+            totalPriceInteger () {
+                return this.totalPrice
+                    ? formatPrice(this.totalPrice).split(',')[0]
+                    : '---'
+            },
+
+            totalPriceFloat () {
+                return this.totalPrice
+                    ? `,${formatPrice(this.totalPrice).split(',')[1]}`
+                    : ''
+            },
+
             minorInstallment () {
                 return this.products.length
                     ? this.products.map(p => p.installments).sort()[0]
@@ -119,12 +107,20 @@
                 return this.minorInstallment
                     ? formatPrice(this.totalPrice / this.minorInstallment)
                     : 0
+            },
+
+            ...mapState({
+                products: state => state.cart.products
+            }),
+
+            totalProducts () {
+                return this.products.reduce((prev, curr) =>
+                    prev + curr.quantity
+                , 0)
             }
         },
 
         methods: {
-            formatPrice,
-
             open () {
                 this.cartStyle = {
                     transition: 'right .45s ease-out, opacity 0s',
@@ -145,6 +141,7 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '~_scss_components/badge';
     @import '~_scss_components/button';
     @import '~_scss_components/divider';
     @import '~_scss_components/price';
@@ -153,6 +150,7 @@
         width: 100%;
         height: 100%;
         max-width: 400px;
+        max-height: 100%;
 
         padding: 15px;
 
@@ -204,6 +202,11 @@
                 font-weight: bold;
                 text-shadow: 0px 0 white;
             }
+        }
+
+        &__list {
+            max-height: calc(100% - 235px);
+            overflow: scroll;
         }
 
         &__price {

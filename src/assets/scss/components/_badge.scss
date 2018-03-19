@@ -1,0 +1,26 @@
+.badge {
+    position: relative;
+
+    &:after {
+        width: 18px;
+        height: 18px;
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        transform: translate(25%, 25%);
+
+        content: attr(badge);
+
+        background-color: $color-yellow;
+        border-radius: 50%;
+
+        color: black;
+        font-size: 10px;
+        font-weight: bold;
+        line-height: 18px;
+        text-align: center;
+        text-shadow: 0 0 black;
+    }
+}
