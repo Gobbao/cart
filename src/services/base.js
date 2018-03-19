@@ -1,9 +1,10 @@
 import axios from 'axios'
+import config from '_config'
 
 class BaseService {
 
     getUrl () {
-        return 'http://localhost:8000'
+        return config.API_URL
     }
 
     request (method = 'get', url = this.getUrl()) {

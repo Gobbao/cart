@@ -4,3 +4,4 @@ dist/
 npm-debug.log*
 .vscode/
 .editorconfig
+src/config/config.local.js
