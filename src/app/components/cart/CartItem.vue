@@ -1,13 +1,9 @@
 <template>
     <div class="cart-item">
-        <div @click="removeProductFromCart(item)" class="cart-item__close">
-            <i class="cart-item__close__icon fas fa-times"></i>
-        </div>
+        <div @click="removeProductFromCart(item)" class="cart-item__close"></div>
 
         <div class="cart-item__content">
-            <div class="cart-item__content__image"
-                :style="{ backgroundImage: `url(${item.image})` }"
-            ></div>
+            <div class="cart-item__content__image"></div>
 
             <div class="cart-item__content__info">
                 <div class="cart-item__content__info__title">{{ item.title }}</div>
@@ -67,17 +63,22 @@
         justify-content: space-between;
 
         &__close {
+            width: 15px;
+            height: 15px;
+
             position: absolute;
             top: 13px;
             right: 0;
 
-            color: black;
-            font-size: 18px;
+            background-image: url('~_images/times-black.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
 
             cursor: pointer;
 
             &:hover {
-                color: white;
+                background-image: url('~_images/times-white.png');
 
                 & ~ div {
                     color: darken($color-yellow, 30);
@@ -119,6 +120,7 @@
 
                 position: relative;
 
+                background-image: url('~_images/product.png');
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;

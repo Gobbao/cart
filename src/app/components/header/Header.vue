@@ -4,9 +4,7 @@
             class="header__menu"
             :class="{ badge: totalProducts }"
             :badge="totalProducts"
-        >
-            <i class="fas fa-shopping-bag"></i>
-        </div>
+        ></div>
 
         <cart ref="cart"></cart>
     </div>
@@ -63,9 +61,13 @@
         background-color: $color-black;
 
         &__menu {
-            color: white;
-            font-size: 25px;
-            line-height: 30px;
+            width: 30px;
+            height: 30px;
+
+            background-image: url('~_images/cart-white.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
 
             cursor: pointer;
         }

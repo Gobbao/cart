@@ -1,16 +1,12 @@
 <template>
     <div class="cart" :style="cartStyle">
-        <div class="cart__close" @click="close">
-            <i class="cart__close__icon fas fa-times"></i>
-        </div>
+        <div class="cart__close" @click="close"></div>
 
         <div class="cart__header">
-            <div class="cart__header__icon"
+            <div class="cart__header__image"
                 :class="{ badge: totalProducts }"
                 :badge="totalProducts"
-            >
-                <i class="fas fa-shopping-bag"></i>
-            </div>
+            ></div>
             <span class="cart__header__title">SACOLA</span>
         </div>
 
@@ -170,17 +166,22 @@
         }
 
         &__close {
+            width: 20px;
+            height: 20px;
+
             position: absolute;
             top: 10px;
             right: 15px;
 
-            color: black;
-            font-size: 30px;
+            background-image: url('~_images/times-black.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
 
             cursor: pointer;
 
             &:hover {
-                color: white;
+                background-image: url('~_images/times-white.png');
             }
         }
 
@@ -191,8 +192,14 @@
             align-items: center;
             justify-content: center;
 
-            &__icon {
-                font-size: 34px;
+            &__image {
+                width: 40px;
+                height: 40px;
+
+                background-image: url('~_images/cart-white.png');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
             }
 
             &__title {
@@ -243,6 +250,12 @@
                     text-transform: uppercase;
                 }
             }
+        }
+
+        &__button:hover {
+            background-color: white;
+
+            color: black;
         }
     }
 </style>

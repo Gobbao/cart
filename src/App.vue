@@ -34,6 +34,10 @@
 <style lang="scss" scoped>
     .container {
         padding: 65px 15px 15px 15px;
+
+        @media only screen and (min-width: $screen-md) {
+            padding: 65px 10vw 15px 10vw;
+        }
     }
 </style>
 

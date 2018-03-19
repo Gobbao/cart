@@ -16,7 +16,7 @@
 
 <script>
     import { mapActions } from 'vuex'
-    import Product from '_components/Product.vue'
+    import Product from '_components/product/Product.vue'
 
     export default {
         name: 'ProductsView',

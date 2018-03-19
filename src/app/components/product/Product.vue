@@ -2,7 +2,7 @@
     <div class="product flip">
         <!-- front card -->
         <div class="product__front flip__front card">
-            <div class="product__front__image" :style="{ backgroundImage: `url(${product.image})` }"></div>
+            <div class="product__front__image"></div>
 
             <div class="product__front__info">
                 <div class="product__front__info__title">{{ product.title }}</div>
@@ -132,10 +132,13 @@
         }
 
         &__front {
+            height: 100%;
+
             &__image {
                 width: 100%;
                 height: 230px;
 
+                background-image: url('~_images/product.png');
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;
