@@ -35,6 +35,7 @@ module.exports = {
             _components: path.join(app, 'components'),
             _views: path.join(app, 'views'),
             _assets: path.join(src, 'assets'),
+            _images: path.join(src, 'assets', 'images'),
             _scss: path.join(src, 'assets', 'scss'),
             _scss_components: path.join(src, 'assets', 'scss', 'components'),
             _scss_config: path.join(src, 'assets', 'scss', 'config'),

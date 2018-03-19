@@ -9,6 +9,7 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex'
     import MainHeader from '_components/header/Header.vue'
 
     export default {
@@ -16,6 +17,16 @@
 
         components: {
             MainHeader
+        },
+
+        beforeMount () {
+            this.fetchLocalProducts()
+        },
+
+        methods: {
+            ...mapActions([
+                'fetchLocalProducts'
+            ])
         }
     }
 </script>

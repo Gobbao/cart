@@ -1,3 +1,8 @@
+import LocalStorageService from '_services/local-storage'
+
+const updateLocalProducts = products =>
+    LocalStorageService.setItem('products', products)
+
 export default {
     state: {
         products: []
@@ -21,12 +26,20 @@ export default {
                 product.quantity = 1
                 state.products.push(product)
             }
+
+            updateLocalProducts(state.products)
         },
 
         removeProduct (state, product) {
             state.products = state.products.filter(stateProduct =>
                 stateProduct.id !== product.id
             )
+
+            updateLocalProducts(state.products)
+        },
+
+        setProducts (state, products) {
+            state.products = products
         }
     },
 
@@ -37,6 +50,10 @@ export default {
 
         removeProductFromCart ({ commit }, product) {
             commit('removeProduct', product)
+        },
+
+        fetchLocalProducts ({ commit }) {
+            commit('setProducts', LocalStorageService.getItem('products') || [])
         }
     }
 }
