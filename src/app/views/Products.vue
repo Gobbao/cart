@@ -15,6 +15,7 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex'
     import Product from '_components/Product.vue'
 
     export default {
@@ -28,6 +29,18 @@
             return {
                 products: []
             }
+        },
+
+        beforeMount () {
+            this.getProducts().then(response => {
+                this.products = response.data
+            })
+        },
+
+        methods: {
+            ...mapActions([
+                'getProducts'
+            ])
         }
     }
 </script>

@@ -38,6 +38,7 @@ module.exports = {
             _scss: path.join(src, 'assets', 'scss'),
             _scss_components: path.join(src, 'assets', 'scss', 'components'),
             _scss_config: path.join(src, 'assets', 'scss', 'config'),
+            _services: path.join(src, 'services'),
             _utils: path.join(src, 'utils')
         }
     },
