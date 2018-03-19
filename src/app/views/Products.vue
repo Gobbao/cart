@@ -16,7 +16,6 @@
 
 <script>
     import Product from '_components/Product.vue'
-    import products from '_src/products'
 
     export default {
         name: 'ProductsView',
@@ -27,7 +26,7 @@
 
         data () {
             return {
-                products
+                products: []
             }
         }
     }
