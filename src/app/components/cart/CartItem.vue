@@ -51,6 +51,7 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '~_scss_config/variables';
     @import '~_scss_components/price';
 
     .cart-item {

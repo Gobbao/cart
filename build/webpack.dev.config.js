@@ -2,7 +2,7 @@ const webpack   = require('webpack')
     , path      = require('path')
     , base      = require('./webpack.base.config')
     , vueConfig = require('./configs/vue-loader.config')
-    , imgConfig = require('./configs/images-config')
+    , imgConfig = require('./configs/images.config')
 
 const config = Object.assign({}, base, {
     plugins: (base.plugins || []).concat([

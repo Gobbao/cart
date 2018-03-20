@@ -32,6 +32,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '~_scss_config/variables';
+
     .container {
         padding: 65px 15px 15px 15px;
 

@@ -9,17 +9,5 @@ module.exports = {
         require('autoprefixer')({
             browsers: ['last 4 versions', 'IE 11']
         })
-    ],
-    loaders: {
-        scss: [
-            'style-loader', 'css-loader',
-            {
-                loader: 'sass-loader',
-                options: {
-                    data: '@import "~_scss_config/_variables.scss";',
-                    includePaths: [app]
-                }
-            }
-        ]
-    }
+    ]
 }

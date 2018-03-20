@@ -3,10 +3,8 @@ const webpack = require('webpack')
     , vueConf = require('./configs/vue-loader.config')
     , imgConf = require('./configs/images.config')
     , htmlPlgConf = require('./configs/html-plugin.config')
-    , styleLoaderConf = require('./configs/style-loader.config')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-    , DashboardPlugin = require('webpack-dashboard/plugin')
 
 const root = path.join(__dirname, '..')
     , src = path.join(root, 'src')
@@ -75,7 +73,14 @@ module.exports = {
                     name: '[name].[ext]?[hash]'
                 }
             },
-            ...styleLoaderConf
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.scss$/,
+                loader: 'style-loader!css-loader!sass-loader'
+            }
         ]
     },
 
@@ -87,7 +92,6 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest'],
             minChunks: Infinity
-        }),
-        new DashboardPlugin()
+        })
     ]
 }

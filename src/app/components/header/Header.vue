@@ -42,6 +42,7 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '~_scss_config/variables';
     @import '~_scss_components/badge';
 
     .header {
