@@ -26,16 +26,12 @@ export default {
                 product.quantity = 1
                 state.products.push(product)
             }
-
-            updateLocalProducts(state.products)
         },
 
         removeProduct (state, product) {
             state.products = state.products.filter(stateProduct =>
                 stateProduct.id !== product.id
             )
-
-            updateLocalProducts(state.products)
         },
 
         setProducts (state, products) {
@@ -44,12 +40,16 @@ export default {
     },
 
     actions: {
-        addProductToCart ({ commit }, product) {
-            commit('addProduct', product)
+        addProductToCart ({ commit, state }, product) {
+            Promise.resolve(commit('addProduct', product)).then(
+                () => updateLocalProducts(state.products)
+            )
         },
 
-        removeProductFromCart ({ commit }, product) {
-            commit('removeProduct', product)
+        removeProductFromCart ({ commit, state }, product) {
+            Promise.resolve(commit('removeProduct', product)).then(
+                () => updateLocalProducts(state.products)
+            )
         },
 
         fetchLocalProducts ({ commit }) {

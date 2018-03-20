@@ -24,6 +24,8 @@ module.exports = {
         filename: '[name].js'
     },
 
+    node: process.env.NODE_ENV === 'test' ? { fs: 'empty' } : {},
+
     resolve: {
         modules: [path.resolve(root, 'node_modules')],
         alias: {
@@ -89,9 +91,11 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor', 'manifest'],
-            minChunks: Infinity
-        })
+        process.env.NODE_ENV === 'test'
+            ? { apply () {} }
+            : new webpack.optimize.CommonsChunkPlugin({
+                names: ['vendor', 'manifest'],
+                minChunks: Infinity
+            })
     ]
 }

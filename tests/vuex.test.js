@@ -1,6 +1,8 @@
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
-import { state, mutations } from '../src/store/modules/cart'
+import cart from '../src/store/modules/cart'
+
+const { state, mutations } = cart
 
 describe('mutations', () => {
     it('ADD PRODUCT', () => {

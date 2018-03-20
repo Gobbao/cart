@@ -12,7 +12,7 @@
     "build:dev": "webpack-dev-server --inline --hot --history-api-fallback --config build/webpack.base.config.js",
     "build:prod": "webpack --config build/webpack.prod.config.js --progress --display-error-details",
     "server": "node server/app.js PORT=8000",
-    "tests": "mocha-webpack --webpack-config build/webpack.base.config.js tests --recursive"
+    "tests": "NODE_ENV=test mocha-webpack --webpack-config build/webpack.base.config.js tests --recursive"
   },
   "author": "Gabriel Gobbi",
   "license": "MIT",
