@@ -15,5 +15,9 @@ Create a `config.local.js` file on `src/config` directory using `config.example.
 $ npm run dev
 ```
 
+## Tests
+```
+$ npm run tests
+```
 ## License
 MIT
